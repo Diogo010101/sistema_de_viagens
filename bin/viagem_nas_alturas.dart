@@ -1,30 +1,25 @@
 import 'dart:io';
 
 void main() {
-  // TODO fazer funcionar a opção do usuário digitar a opção.
-  /*print("Do que deseja viajar para sua aventura?\n"
-      "Carro\n"
-      "Bike\n"
-      "Skate\n"
-      "Aviao\n"
-      "Andando\n"
-      "Outros\n");
-  String? inputEscolha = stdin.readLineSync();
-  String escolha = inputEscolha.toString();
-  escolha = escolha.toLowerCase();*/
-
   Set<String> registrosVisitados = <String>{};
-  for (int i = 1; i <= 5; i++) {
-    print("Digite o nome do ${i}º de 5 Destinos");
-    String? inputDestino = stdin.readLineSync();
-    String destino = inputDestino.toString();
-    destino = destino.toUpperCase();
+  registrosVisitados = registrarDestino("São Paulo", registrosVisitados);
 
-    registrarDestino(destino, registrosVisitados);
-  }
-  print("$registrosVisitados\n");
-
+  print("Destino selecionado: $registrosVisitados");
   escolherMeioTransposte(Transporte.carro);
+
+  Map<int, dynamic> registrarPrecos = {};
+
+  registrarPrecos[0] = {"São Paulo", 1200};
+  registrarPrecos[1] = {"Rio de Janeiro", 1300};
+  registrarPrecos[2] = {"Bahia",1500};
+  registrarPrecos[3] = {"Pernambuco",1150};
+  registrarPrecos[4] = {"Nova Iorque","Caro"};
+
+  //apresentando com o forEach
+  registrarPrecos.forEach((key, value) {
+    print("testando o foreach $key $value");
+  });
+
 }
 
 Set<String> registrarDestino(String destino, Set<String> banco) {
