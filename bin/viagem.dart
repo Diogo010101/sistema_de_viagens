@@ -6,6 +6,7 @@ class Viagem {
   Transporte locomocao;
   Set<String> registrosVisitados = <String>{};
   Map<String, dynamic> registrarPrecos = {};
+  int _registroLocaisVisitados = 0;
 
   Viagem({required this.locomocao});
 
@@ -40,11 +41,23 @@ class Viagem {
 //Médito para o SET rigistroVisitados
   void visitar(String localVisita) {
     registrosVisitados.add(localVisita);
+    _registroLocaisVisitados += 1;
   }
 
 //método para o MAP risgistrar peços
   void registarPrecoVisita(String local, dynamic preco) {
-     registrarPrecos[local] = preco;
+    registrarPrecos[local] = preco;
+  }
+
+  int get consultarTotalLocaisVisitados {
+    return _registroLocaisVisitados;
+  }
+
+  void set alterarLocaisVisitador(int novaQnt) {
+    if (_registroLocaisVisitados < 10) {
+      _registroLocaisVisitados = _registroLocaisVisitados + novaQnt;
+    } else {
+      print("Não é possível visitar tantos locais em tão pouco tempo");
+    }
   }
 }
-
